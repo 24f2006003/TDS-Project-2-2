@@ -31,15 +31,15 @@ Perfect for **business analysts, researchers, and data enthusiasts** who want **
 | 🎨 **Modern UI**            | Clean, responsive, and beginner-friendly           |
 | ⚡ **Real-Time Results**     | Progress tracking with fast computations           |
 
----
 
-## 🚀 **Quick Start**
+---
+## 🚀 **Quick Start for more detail read `DEPLOYMENT_GUIDE.md` **
 
 ### **1️⃣ Clone the Repository**
 
 ```bash
 git clone https://github.com/24f2006003/TDS-Project-2-2.git
-cd tds-project-2-2
+cd tds-project-2
 ```
 
 ### **2️⃣ Install Dependencies**
@@ -53,14 +53,24 @@ pip install -r requirements.txt
 Create a `.env` file:
 
 ```env
-GOOGLE_API_KEY=your_google_generative_ai_api_key
-LLM_TIMEOUT_SECONDS=150
+# Google Gemini API Keys (Add 1–10 keys for load balancing if you don't have multiple key just paste your one key in all variable)
+gemini_api_1=your_api_key_here
+gemini_api_2=your_api_key_here
+gemini_api_3=your_api_key_here
+gemini_api_4=your_api_key_here
+gemini_api_5=your_api_key_here
+gemini_api_6=your_api_key_here
+gemini_api_7=your_api_key_here
+gemini_api_8=your_api_key_here
+gemini_api_9=your_api_key_here
+gemini_api_10=your_api_key_here
+LLM_TIMEOUT_SECONDS=240
 ```
 
 ### **4️⃣ Run the App**
 
 ```bash
-python app.py
+python -m uvicorn app:app --reload
 ```
 
 Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
@@ -69,17 +79,10 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ## 📖 **How to Use**
 
-### **Step 1: Write Your Questions**
+### **Step 1: Select Question from test_question file:**
 
-Create a `.txt` file:
 
-```
-What are the top-selling products?
-Find correlation between variable X and Y
-Show sales trends over the last 6 months
-```
-
-### **Step 2: Upload Your Data**
+### **Step 2: Upload Required DataSet for your question if any**
 
 * **Required:** Questions file (`.txt`)
 * **Optional:** Dataset in CSV/Excel/JSON/Parquet/TXT
@@ -149,8 +152,8 @@ Show sales trends over the last 6 months
 
 ## 🚀 **Deployment Options**
 
-* **Local** → `python app.py`
-* **Production** → `gunicorn app:app -w 4 -k uvicorn.workers.UvicornWorker`
+* **Local** → `python -m uvicorn app:app --reload`
+* **Production** → `code in entrypoint.sh`
 * **Docker**
 
 ```dockerfile
